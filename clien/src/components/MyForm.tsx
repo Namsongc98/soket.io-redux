@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { socket } from "../soket";
+import { socket } from "../socket";
 
 const MyForm = () => {
   const [value, setValue] = useState("");
@@ -8,8 +8,7 @@ const MyForm = () => {
   function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
-
-    socket.timeout(5000).emit("create-something", value, () => {
+    socket.timeout(1000).emit("create-something", value, () => {
       setIsLoading(false);
     });
   }
